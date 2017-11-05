@@ -1,0 +1,32 @@
+{
+  "name": "uimodal",
+  "version": "1.0.0",
+  "description": "Websemble modal component",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha ./test/component/ui/Modal"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cybersettler/uiModal.git"
+  },
+  "keywords": [
+    "websemble",
+    "html5",
+    "webcomponent"
+  ],
+  "author": "cybersettler@babylonone.com",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/cybersettler/uiModal/issues"
+  },
+  "homepage": "https://github.com/cybersettler/uiModal#readme",
+  "dependencies": {
+    "d3": "^4.11.0",
+    "handlebars": "^4.0.11",
+    "i18next": "^10.0.3"
+  }
+}
