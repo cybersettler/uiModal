@@ -7,6 +7,20 @@ function ModalWidget(view, scope) {
     this.display = {};
 }
 
+ModalWidget.prototype.close = function() {
+    this.view.classList.remove('in');
+    this.view.setAttribute('style', 'display:none');
+};
+
+ModalWidget.prototype.open = function() {
+    var widget = this;
+    this.render()
+        .then(function() {
+            widget.view.setAttribute('style','display:block');
+            widget.view.classList.add('in');
+        });
+};
+
 ModalWidget.prototype.render = function() {
     return this.fetchData()
         .then(render);
@@ -67,12 +81,6 @@ function renderFooter(widget, modal) {
     var button = d3.select(footer)
         .selectAll("button")
         .data(data)
-        .classed("btn-default", function(d) {
-            return d.type !== 'confirm';
-        })
-        .classed("btn-primary", function(d) {
-            return d.type === 'confirm';
-        })
         .html(function(d) {
             let renderLabel = Handlebars.compile(d.label);
             return renderLabel(widget);
@@ -87,6 +95,14 @@ function renderFooter(widget, modal) {
         })
         .classed("btn-primary", function(d) {
             return d.styleClass === 'primary';
+        })
+        .on('click', function(d) {
+            if (d.type === 'confirm' && widget.scope.onConfirm) {
+                widget.scope.onConfirm(d);
+            } else if (d.type === 'reject' && widget.scope.onReject) {
+                widget.scope.onReject(d);
+            }
+            widget.close();
         })
         .html(function(d) {
             let renderLabel = Handlebars.compile(d.label);

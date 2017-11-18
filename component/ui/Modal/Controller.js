@@ -24,14 +24,27 @@ function ModalController(view, scope) {
             bindingAttributes.push('display');
         }
 
+        if (view.hasAttribute('data-confirm')) {
+            bindingAttributes.push('confirm');
+        }
+
+        if (view.hasAttribute('data-reject')) {
+            bindingAttributes.push('reject');
+        }
+
         scope.bindAttributes(bindingAttributes);
         controller.modalWidget = new ModalWidget(view, scope);
-        controller.modalWidget.render();
+
+        view.addEventListener('open', openDialog);
     });
 
     this.render = function () {
-        this.listWidget.render();
+        this.modalWidget.render();
     };
+
+    function openDialog() {
+        controller.modalWidget.open();
+    }
 }
 
 module.exports = ModalController;

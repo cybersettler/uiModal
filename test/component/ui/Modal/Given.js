@@ -147,10 +147,12 @@ module.exports = {
         display.options = [
             {
                 type: 'confirm',
-                label: "{{i18n 'action.confirm'}}"
+                label: "{{i18n 'action.confirm'}}",
+                styleClass: 'primary'
             }, {
-                type: 'cancel',
-                label: "{{i18n 'action.cancel'}}"
+                type: 'reject',
+                label: "{{i18n 'action.cancel'}}",
+                styleClass: 'default'
             }
         ];
         bindDisplayAttribute();
