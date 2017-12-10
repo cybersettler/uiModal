@@ -1,5 +1,4 @@
 const d3 = require('d3');
-const Handlebars = require('Handlebars');
 
 function ModalWidget(view, scope) {
     this.view = view;
@@ -63,14 +62,14 @@ function render(widget) {
 
 function renderTitle(widget, modal) {
     var title = modal.querySelector('.modal-title');
-    var renderTemplate = Handlebars.compile(widget.display.title);
-    title.innerHTML = renderTemplate({model: widget.model});
+    title.innerHTML = widget.scope.templateEngine.render(
+        widget.display.title, {model: widget.model});
 }
 
 function renderBody(widget, modal) {
     var body = modal.querySelector('.modal-body');
-    var renderTemplate = Handlebars.compile(widget.display.body);
-    body.innerHTML = renderTemplate({model: widget.model});
+    body.innerHTML = widget.scope.templateEngine.render(
+        widget.display.body, {model: widget.model});
 }
 
 function renderFooter(widget, modal) {
@@ -82,8 +81,8 @@ function renderFooter(widget, modal) {
         .selectAll("button")
         .data(data)
         .html(function(d) {
-            let renderLabel = Handlebars.compile(d.label);
-            return renderLabel(widget);
+            return widget.scope.templateEngine.render(
+                d.label, widget);
         });
 
     // Enter…
@@ -105,8 +104,7 @@ function renderFooter(widget, modal) {
             widget.close();
         })
         .html(function(d) {
-            let renderLabel = Handlebars.compile(d.label);
-            return renderLabel(widget);
+            return widget.scope.templateEngine.render(d.label, widget);
         });
 
     // Exit…
