@@ -35,7 +35,7 @@ function ModalController(view, scope) {
         scope.bindAttributes(bindingAttributes);
         controller.modalWidget = new ModalWidget(view, scope);
 
-        view.addEventListener('open', openDialog);
+        view.addEventListener('openDialog', openDialog);
     });
 
     this.render = function () {
@@ -43,7 +43,14 @@ function ModalController(view, scope) {
     };
 
     function openDialog() {
-        controller.modalWidget.open();
+        var widget = controller.modalWidget;
+        widget.render()
+            .then(function () {
+                widget.backdrop.classList.add('in');
+                document.body.appendChild(widget.backdrop);
+                widget.view.setAttribute('style', 'display:block');
+                widget.modal.classList.add('in');
+            });
     }
 }
 

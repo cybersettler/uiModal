@@ -18,6 +18,12 @@ describe('ModalWidget', function () {
                 });
                 done(err);
             });
+            Given.scope().templateEngine = {
+                render: function(template, data) {
+                    var doRender = Handlebars.compile(template);
+                    return doRender(data);
+                }
+            };
         });
 
         // Scenario 1: items and content from model

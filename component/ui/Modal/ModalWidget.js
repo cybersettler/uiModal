@@ -4,20 +4,18 @@ function ModalWidget(view, scope) {
     this.view = view;
     this.scope = scope;
     this.display = {};
+    this.modal = view.shadowRoot.querySelector('.modal');
+    var backdrop = document.createElement('div');
+    backdrop.classList.add('modal-backdrop', 'fade');
+    this.backdrop = backdrop;
 }
 
 ModalWidget.prototype.close = function() {
-    this.view.classList.remove('in');
+    this.modal.classList.remove('in');
     this.view.setAttribute('style', 'display:none');
-};
-
-ModalWidget.prototype.open = function() {
-    var widget = this;
-    this.render()
-        .then(function() {
-            widget.view.setAttribute('style','display:block');
-            widget.view.classList.add('in');
-        });
+    var backdrop = this.backdrop;
+    backdrop.classList.remove('in');
+    document.body.removeChild(backdrop);
 };
 
 ModalWidget.prototype.render = function() {
