@@ -1,6 +1,7 @@
 const d3 = require('d3');
 
 function ModalWidget(view, scope) {
+    var modal = this;
     this.view = view;
     this.scope = scope;
     this.display = {};
@@ -8,6 +9,10 @@ function ModalWidget(view, scope) {
     var backdrop = document.createElement('div');
     backdrop.classList.add('modal-backdrop', 'fade');
     this.backdrop = backdrop;
+    var closeButton = view.shadowRoot.querySelector('.modal-header>button.close');
+    closeButton.addEventListener('click', function() {
+        modal.close();
+    });
 }
 
 ModalWidget.prototype.close = function() {
@@ -52,7 +57,6 @@ ModalWidget.prototype.fetchData = function() {
 
 function render(widget) {
     var modal = widget.view.shadowRoot.querySelector('.modal');
-    console.log('modal', modal);
     renderTitle(widget, modal);
     renderBody(widget, modal);
     renderFooter(widget, modal);
