@@ -48,6 +48,7 @@ function ModalController(view, scope) {
             widget.model = e.detail.model;
         }else if (e && e.detail && typeof e.detail.model === 'string'
         && /^\//.test(e.detail.model)) {
+            widget.view.dataset.model = e.detail.model;
             scope.bindAttribute('model');
         } else if (e && e.detail && typeof e.detail.model === 'string') {
             widget.view.dataset.model = '{' + e.detail.model + '}';
