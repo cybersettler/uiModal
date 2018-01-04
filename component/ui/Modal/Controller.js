@@ -36,6 +36,7 @@ function ModalController(view, scope) {
         controller.modalWidget = new ModalWidget(view, scope);
 
         view.addEventListener('openDialog', openDialog);
+        view.addEventListener('closeDialog', closeDialog);
     });
 
     this.render = function () {
@@ -72,6 +73,11 @@ function ModalController(view, scope) {
                 widget.view.setAttribute('style', 'display:block');
                 widget.modal.classList.add('in');
             });
+    }
+
+    function closeDialog() {
+        var widget = controller.modalWidget;
+        widget.close();
     }
 }
 
