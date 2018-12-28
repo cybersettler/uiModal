@@ -1,0 +1,20 @@
+<template>
+  <h1>Modal Example</h1>
+  <button onclick="document.querySelector('ui-modal').dispatchEvent(new CustomEvent('openDialog', {detail: {
+    display: {
+      title: 'test', body:'Hello World!',
+      options: [
+        {
+          type: 'confirm',
+          label: 'ok',
+          styleClass: 'primary'
+        }, {
+          type: 'reject',
+          label: 'cancel',
+          styleClass: 'default'
+        }
+      ]}}}))">
+    Request pointer lock
+  </button>
+  <ui-modal></ui-modal>
+</template>

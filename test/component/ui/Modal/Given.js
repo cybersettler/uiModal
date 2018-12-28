@@ -80,7 +80,7 @@ const translation = {
 
 function getHtmlContent() {
     return new Promise(function(fulfill, reject) {
-        fs.readFile(appRoot + '/component/ui/Modal/View.html', (err, data) => {
+        fs.readFile(appRoot + '/dist/view/View.html', (err, data) => {
             if (err) {
                 reject(err);
             }

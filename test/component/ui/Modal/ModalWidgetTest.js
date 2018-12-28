@@ -2,8 +2,9 @@ const {JSDOM} = require('jsdom');
 const i18next = require('i18next');
 const Handlebars = require('Handlebars');
 const expect = require('chai').expect;
-const ModalWidget = require('../../../../component/ui/Modal/ModalWidget.js');
+const ModalWidget = require('../../../../src/main/js/ModalWidget.js').default;
 const Given = require("./Given.js");
+const d3 = require("d3");
 
 const translations = Given.translation();
 
@@ -23,6 +24,11 @@ describe('ModalWidget', function () {
                     var doRender = Handlebars.compile(template);
                     return doRender(data);
                 }
+            };
+            Given.scope().importESModule = function(moduleName) {
+              if (moduleName === 'd3') {
+                return Promise.resolve(d3);
+              }
             };
         });
 

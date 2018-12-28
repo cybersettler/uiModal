@@ -44,8 +44,8 @@ Display configuration of the modal. The display object supports the following op
 * __options__(array): Modal options
     * __label__(string): option label
     * __type__(enum: confirm | reject): option type
-    * __styleClass_(enum: default | primary): option style
-    
+    * __styleClass__(enum: default | primary): option style
+
 ### data-confirm
 
 Confirm event callback function, called when the user
