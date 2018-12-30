@@ -1,7 +1,7 @@
 {
   "name": "ui-modal",
   "version": "0.1.0",
-  "description": "Websemble modal component",
+  "description": "Weldkit modal component",
   "main": "index.js",
   "directories": {
     "test": "test"
@@ -14,7 +14,7 @@
     "url": "git+https://github.com/cybersettler/uiModal.git"
   },
   "keywords": [
-    "websemble",
+    "weldkit",
     "html5",
     "webcomponent"
   ],
