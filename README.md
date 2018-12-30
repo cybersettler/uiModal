@@ -3,17 +3,10 @@
 
 ## Getting started
 
-Include UI Modal in your project dependencies
-(see [websemble generator]
-  (https://github.com/cybersettler/generator-websemble/wiki)).
-In your project's bower.json:
+Include UI Modal in your project dependencies:
 
-```json
-{
-  "dependencies": {
-    "uiModal": "cybersettler/uiModal"
-  }
-}
+```javascript
+npm install ui-modal --save
 ```
 
 In your view you would insert an HTML tag like so:
@@ -39,12 +32,15 @@ Data to be used in the modal.
 
 Display configuration of the modal. The display object supports the following options:
 
-* __title__(string): Modal title
-* __content__(string): Modal content
-* __options__(array): Modal options
-    * __label__(string): option label
-    * __type__(enum: confirm | reject): option type
-    * __styleClass__(enum: default | primary): option style
+* __header__(object): Modal header
+    * __title__(string): Modal title
+    * __closeButton__(boolean): Display close button in the header
+* __body__(string): Modal content
+* __footer__(object): Modal footer
+    * __options__(array): Modal options
+      * __label__(string): option label
+      * __type__(enum: confirm | reject): option type
+      * __styleClass__(enum: default | primary): option style
 
 ### data-confirm
 

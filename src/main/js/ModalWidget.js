@@ -10,10 +10,6 @@ class ModalWidget {
     var backdrop = document.createElement('div');
     backdrop.classList.add('modal-backdrop', 'fade');
     this.backdrop = backdrop;
-    var closeButton = view.shadowRoot.querySelector('.modal-header>button.close');
-    closeButton.addEventListener('click', function() {
-      modal.close();
-    });
   }
 
   close() {
@@ -64,15 +60,32 @@ class ModalWidget {
 
 function render(widget) {
   var modal = widget.view.shadowRoot.querySelector('.modal');
-  renderTitle(widget, modal);
+  renderHeader(widget, modal);
   renderBody(widget, modal);
   renderFooter(widget, modal);
 }
 
-function renderTitle(widget, modal) {
-  var title = modal.querySelector('.modal-title');
+function renderHeader(widget, modal) {
+  let title = modal.querySelector('.modal-title');
   title.innerHTML = widget.scope.templateEngine.render(
-    widget.display.title, {model: widget.model});
+    widget.display.header.title, {model: widget.model});
+  if (widget.display && widget.display.header
+    && widget.display.header.closeButton) {
+      let header = modal.querySelector('.modal-header');
+      let span = document.createElement('span');
+      span.setAttribute('aria-hidden', 'true');
+      span.innerHTML = '&times;';
+      let closeBtn = document.createElement('button');
+      closeBtn.setAttribute('type', 'button');
+      closeBtn.classList.add('close');
+      closeBtn.setAttribute('data-dismiss', 'modal');
+      closeBtn.setAttribute('aria-label', 'Close');
+      closeBtn.appendChild(span);
+      header.prepend(closeBtn);
+      closeBtn.addEventListener('click', function() {
+        widget.close();
+      });
+  }
 }
 
 function renderBody(widget, modal) {
@@ -83,7 +96,7 @@ function renderBody(widget, modal) {
 
 function renderFooter(widget, modal) {
   var footer = modal.querySelector('.modal-footer');
-      var data = widget.display.options;
+      var data = widget.display.footer.options;
 
       // Update…
       var button = d3.select(footer)

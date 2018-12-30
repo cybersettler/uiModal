@@ -109,9 +109,11 @@ function createShadowRoot() {
 
 function initDisplay() {
     display = {
-        title: '',
-        content: '',
-        options: []
+        header: {},
+        body: '',
+        footer: {
+          options: []
+        }
     };
 }
 
@@ -142,9 +144,9 @@ module.exports = {
     },
     display: function () {
         initDisplay();
-        display.title = "{{i18n 'user.profile'}}";
+        display.header.title = "{{i18n 'user.profile'}}";
         display.body = "{{model.lastname}}, {{model.firstname}}";
-        display.options = [
+        display.footer.options = [
             {
                 type: 'confirm',
                 label: "{{i18n 'action.confirm'}}",
