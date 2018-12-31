@@ -1,5 +1,5 @@
 # uiModal
-> Websemble modal component
+> Weldkit modal component
 
 ## Getting started
 
@@ -21,12 +21,26 @@ The modal display, model, and callbacks may be specified
 as tag attributes or by passing a configuration object with
 the _openDialog_ event.
 
+Modal display may be specified as tag attribute, in _openDialog_ event
+detail or as tag content, like so:
+
+```html
+<ui-modal>
+  <header data-closebtn="true">
+    Test
+  </header>
+  <div>Hello World!</div>
+  <footer>
+    <button data-role="accept" class="primary">Ok</button>
+  </footer>
+</ui-modal>
+```
+
 ## API
 
 ### data-model
 
 Data to be used in the modal.
-
 
 ### data-display
 
@@ -34,7 +48,7 @@ Display configuration of the modal. The display object supports the following op
 
 * __header__(object): Modal header
     * __title__(string): Modal title
-    * __closeButton__(boolean): Display close button in the header
+    * __closebtn__(boolean): Display close button in the header
 * __body__(string): Modal content
 * __footer__(object): Modal footer
     * __options__(array): Modal options

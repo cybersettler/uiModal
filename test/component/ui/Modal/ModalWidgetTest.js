@@ -23,6 +23,9 @@ describe('ModalWidget', function () {
                 render: function(template, data) {
                     var doRender = Handlebars.compile(template);
                     return doRender(data);
+                },
+                compile: function(template) {
+                  return Handlebars.compile(template);
                 }
             };
             Given.scope().importESModule = function(moduleName) {

@@ -1,28 +1,15 @@
 <template>
   <h1>Modal Example</h1>
-  <button onclick="document.querySelector('ui-modal').dispatchEvent(new CustomEvent('openDialog', {detail: {
-    display: {
-      header: {
-        title: 'test',
-        closeButton: true
-      },
-      body:'Hello World!',
-      footer: {
-        options: [
-          {
-            type: 'confirm',
-            label: 'ok',
-            styleClass: 'primary'
-          }, {
-            type: 'reject',
-            label: 'cancel',
-            styleClass: 'default'
-          }
-        ]
-      }
-    }
-  }}))">
+  <button onclick="document.querySelector('ui-modal').dispatchEvent(new CustomEvent('openDialog'))">
     Request pointer lock
   </button>
-  <ui-modal></ui-modal>
+  <ui-modal>
+    <header data-closebtn="true">
+      Test
+    </header>
+    <div>Hello World!</div>
+    <footer>
+      <button data-role="accept" class="primary">Ok</button>
+    </footer>
+  </ui-modal>
 </template>
