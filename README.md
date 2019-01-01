@@ -31,7 +31,7 @@ detail or as tag content, like so:
   </header>
   <div>Hello World!</div>
   <footer>
-    <button data-role="accept" class="primary">Ok</button>
+    <button data-role="confirm" class="primary">Ok</button>
   </footer>
 </ui-modal>
 ```

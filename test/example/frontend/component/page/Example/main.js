@@ -14,6 +14,10 @@ class IndexElement extends PageElement {
       console.log("Template imported", template.id);
     });
   }
+
+  onConfirmed() {
+    alert('dialog confirmed');
+  }
 }
 
 customElements.define('page-example', IndexElement);

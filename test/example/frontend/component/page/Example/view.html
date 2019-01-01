@@ -3,13 +3,13 @@
   <button onclick="document.querySelector('ui-modal').dispatchEvent(new CustomEvent('openDialog'))">
     Request pointer lock
   </button>
-  <ui-modal>
+  <ui-modal data-confirm="{confirmed}">
     <header data-closebtn="true">
       Test
     </header>
     <div>Hello World!</div>
     <footer>
-      <button data-role="accept" class="primary">Ok</button>
+      <button data-role="confirm" class="primary">Ok</button>
     </footer>
   </ui-modal>
 </template>
