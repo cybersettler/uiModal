@@ -2,7 +2,7 @@
   "name": "ui-modal",
   "version": "0.2.0",
   "description": "Weldkit modal component",
-  "main": "index.js",
+  "main": "main.js",
   "directories": {
     "test": "test"
   },
